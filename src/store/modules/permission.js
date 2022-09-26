@@ -1,5 +1,4 @@
 import { asyncRoutes, constantRoutes } from '@/router'
-import { getMenuToken, removeMenuToken, setMenuToken } from '@/utils/base/auth'
 
 /**
  * 通过meta.roles  判断是否与当前用户权限匹配
@@ -46,19 +45,13 @@ export function filterAsyncRoutes(routes, routes_map) {
  */
 const state = {
   routers: [],
-  addRouters: [],
-
-  activeMenuOnePath: getMenuToken()
+  addRouters: []
 }
 
 const mutations = {
   SET_ROUTERS: (state, routes) => {
     state.addRouters = routes
     state.routers = constantRoutes.concat(routes)
-  },
-
-  SET_ACTIVE_MENU_ONE: (state, activeMenuOnePath) => {
-    state.activeMenuOnePath = activeMenuOnePath
   }
 }
 
@@ -69,15 +62,6 @@ const actions = {
       commit('SET_ROUTERS', accessedRoutes)
       resolve(accessedRoutes)
     })
-  },
-
-  changeActiveMenuOne({ commit }, activeMenuOnePath) {
-    setMenuToken(activeMenuOnePath)
-    commit('SET_ACTIVE_MENU_ONE', activeMenuOnePath)
-  },
-  removeActiveMenuOne({ commit }) {
-    removeMenuToken()
-    commit('SET_ACTIVE_MENU_ONE', null)
   }
 }
 

@@ -1,4 +1,4 @@
-import { getToken, removeToken, setToken, getUsername, setUsername, removeUsername } from '@/utils/base/auth'
+import { getToken, setToken, getUsername, setUsername, clearLocalStorage } from '@/utils/base/auth'
 
 const state = {
   token: getToken(),
@@ -27,8 +27,7 @@ function removeStore(commit) {
   commit('SET_USERNAME', '')
   commit('SET_ROLE', null)
   commit('SET_MENUS', null)
-  removeToken()
-  removeUsername()
+  clearLocalStorage()
 }
 
 const actions = {

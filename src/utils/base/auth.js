@@ -1,6 +1,4 @@
-import Cookies from 'js-cookie'
-
-const tokenKey = 'Authorization Token'
+const tokenKey = 'token'
 
 export function getToken() {
   return localStorage.getItem(tokenKey)
@@ -12,20 +10,6 @@ export function setToken(token) {
 
 export function removeToken() {
   localStorage.removeItem(tokenKey)
-}
-
-const tokenMenuKey = 'Menu Path'
-
-export function getMenuToken() {
-  return localStorage.getItem(tokenMenuKey)
-}
-
-export function setMenuToken(key) {
-  return localStorage.setItem(tokenMenuKey, key)
-}
-
-export function removeMenuToken() {
-  localStorage.removeItem(tokenMenuKey)
 }
 
 const usernameKey = 'Username'
@@ -40,4 +24,8 @@ export function setUsername(key) {
 
 export function removeUsername() {
   localStorage.removeItem(usernameKey)
+}
+
+export function clearLocalStorage() {
+  localStorage.clear()
 }

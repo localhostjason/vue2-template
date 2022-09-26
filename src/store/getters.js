@@ -11,8 +11,6 @@ const getters = {
   menus: state => state.user.menus,
 
   permission_routers: state => state.permission.routers,
-  addRouters: state => state.permission.addRouters,
-
-  activeMenuOnePath: state => state.permission.activeMenuOnePath
+  addRouters: state => state.permission.addRouters
 }
 export default getters
