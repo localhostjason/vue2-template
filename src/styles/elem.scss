@@ -1,0 +1,198 @@
+.el-tabs--border-card > .el-tabs__header .el-tabs__item + .el-tabs__item,
+.el-tabs--border-card > .el-tabs__header .el-tabs__item:first-child {
+  margin-left: 0;
+}
+
+.el-breadcrumb__inner,
+.el-breadcrumb__inner a {
+  font-weight: 400 !important;
+  font-size: 14px;
+}
+
+.el-breadcrumb__inner a:hover,
+.el-breadcrumb__inner.is-link:hover {
+  font-size: 14px !important;
+}
+
+.el-row {
+  margin-bottom: 10px;
+}
+
+.el-button--small,
+.el-button--small.is-round {
+  padding: 8px 15px;
+}
+
+.el-button {
+  //font-size: 12px;
+  //border-radius: 0;
+  //padding: 8px 16px;
+  //height: 32px;
+  //line-height: 14px;
+}
+
+.el-dialog {
+  border-radius: 0;
+  .el-dialog__header {
+    padding: 15px;
+    border-bottom: 1px solid #e5e5e5;
+    .el-dialog__title {
+      font-size: 14px;
+      color: #333;
+    }
+  }
+  .el-dialog__footer {
+    padding: 15px 20px;
+    text-align: left;
+    border-top: 1px solid #e5e5e5;
+  }
+}
+
+.el-form-item__label {
+  font-weight: normal;
+  font-size: 12px;
+  color: #666;
+}
+
+.el-checkbox__label {
+  font-size: 12px;
+}
+
+.el-radio-button--small .el-radio-button__inner,
+.el-input__inner,
+.el-radio.is-bordered,
+.el-textarea__inner,
+.el-checkbox__inner {
+  //border-radius: 0 !important;
+  font-size: 12px;
+}
+
+.el-pagination .el-select .el-input .el-input__inner {
+  border-radius: 0;
+}
+
+.el-pagination.is-background .btn-next,
+.el-pagination.is-background .btn-prev,
+.el-pagination.is-background .el-pager li {
+  border-radius: 0;
+}
+
+table {
+  .el-button {
+    padding: 0;
+  }
+}
+
+.el-table th {
+  font-weight: normal;
+}
+
+.el-table th {
+  background: #f5f6fa;
+  padding: 5px 0 !important;
+  &.is-sortable {
+    padding: 0 !important;
+  }
+}
+
+.el-table--enable-row-hover .el-table__body tr:hover > td {
+  background: #ecf5ff;
+}
+
+.el-tabs {
+  &.el-tabs--top {
+    &.el-tabs--border-card {
+      border: 0;
+    }
+  }
+}
+
+.el-tabs--border-card {
+  .el-tabs__content {
+    padding: 15px 0;
+  }
+  > .el-tabs__header {
+    background-color: transparent;
+    .el-tabs__item {
+      margin: -1px -1px 0px 0;
+      border: 1px solid #e4e7ed;
+      border-top-width: 2px;
+      background: #f5f7fa;
+
+      &.is-active {
+        border-top: 2px solid #39f;
+        position: relative;
+        top: 1px;
+      }
+    }
+  }
+  .el-pagination {
+    padding: 2px 0;
+  }
+}
+
+.el-tabs__item {
+  font-size: 12px;
+}
+
+.el-table__body tr.current-row > td {
+  background-color: #deeeff;
+}
+
+.el-dialog__body {
+  padding: 20px !important;
+}
+
+.el-date-editor .el-range-separator {
+  padding: 0;
+}
+
+.el-tag {
+  border-radius: 0;
+  //padding-right: 5px;
+}
+
+.el-alert {
+  border-radius: 0;
+}
+
+.el-transfer-panel {
+  border-radius: 0;
+}
+
+.el-alert__title {
+  //font-size: 12px;
+}
+
+.el-popover {
+  font-size: 13px;
+}
+
+.el-table__body .cell {
+  line-height: 20px !important;
+}
+
+.el-step.is-vertical .el-step__title {
+  font-size: 13px;
+}
+
+.el-step__description.is-process {
+  color: #606266;
+}
+
+.el-form-item__label {
+  padding: 0 18px 0 0;
+}
+
+//.app-container {
+//  .el-tabs--border-card {
+//    .el-tabs__item {
+//      width: 106px;
+//      text-align: center;
+//    }
+//  }
+//}
+
+//.el-alert--info {
+//  color: #555;
+//}

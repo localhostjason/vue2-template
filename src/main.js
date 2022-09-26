@@ -3,6 +3,18 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 
+import * as filters from './filters'
+import 'normalize.css/normalize.css'
+
+import './icons'
+import './plugins/element'
+import './styles/index.scss'
+import './permission'
+
+Object.keys(filters).forEach(key => {
+  Vue.filter(key, filters[key])
+})
+
 Vue.config.productionTip = false
 
 new Vue({

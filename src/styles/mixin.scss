@@ -1,0 +1,18 @@
+@mixin clearfix {
+  &:after {
+    content: '';
+    display: table;
+    clear: both;
+  }
+}
+
+@mixin backGround($color) {
+  background: $color;
+  &:hover {
+    color: $color;
+    &:before,
+    &:after {
+      background: $color;
+    }
+  }
+}
