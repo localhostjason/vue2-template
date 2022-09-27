@@ -10,25 +10,24 @@
           <search id="header-search" class="right-menu-item" style="position: relative; top: -5px"></search>
         </template>
 
-        <el-dropdown class="avatar-container right-menu-item hover-effect" trigger="click">
+        <el-dropdown class="avatar-container right-menu-item hover-effect" trigger="click" placement="bottom-start">
           <div class="avatar-wrapper">
             {{ username }}
-            <i class="el-icon-caret-bottom"></i>
           </div>
           <el-dropdown-menu slot="dropdown">
-            <router-link to="/user/info">
-              <el-dropdown-item><span style="padding-left: 15px">个人信息</span></el-dropdown-item>
-            </router-link>
+            <span @click="goUserInfo">
+              <el-dropdown-item icon="el-icon-user"><span>个人信息</span></el-dropdown-item>
+            </span>
             <span @click="changePassword">
-              <el-dropdown-item><span style="padding-left: 15px">修改密码</span></el-dropdown-item>
+              <el-dropdown-item icon="el-icon-key"><span>修改密码</span></el-dropdown-item>
             </span>
             <span @click="logout">
-              <el-dropdown-item divided><span style="padding-left: 15px">退出登录</span></el-dropdown-item>
+              <el-dropdown-item icon="el-icon-switch-button" divided><span>退出登录</span></el-dropdown-item>
             </span>
           </el-dropdown-menu>
         </el-dropdown>
 
-        <screenfull id="screenfull" class="right-menu-item hover-effect" style="margin-right: 10px"></screenfull>
+        <screenfull id="screenfull" class="right-menu-item hover-effect" style="padding: 0 20px; font-size: 14px"></screenfull>
       </div>
     </div>
 
@@ -70,6 +69,11 @@ export default {
     },
     changePassword() {
       this.$refs.changePassword.showChangePasswordDialog()
+    },
+    goUserInfo() {
+      this.$router.push({
+        name: 'UserInfo'
+      })
     }
   }
 }
@@ -137,7 +141,7 @@ export default {
     }
 
     .avatar-container {
-      margin-right: 30px;
+      padding: 0 20px;
 
       .avatar-wrapper {
         position: relative;

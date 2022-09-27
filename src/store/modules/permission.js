@@ -1,9 +1,7 @@
 import { asyncRoutes, constantRoutes } from '@/router'
 
 /**
- * 通过meta.roles  判断是否与当前用户权限匹配
- * 如果 用户的role 在菜单的roles 返回 True，否者返回False
- * 但是 如果不带 role，返回True
+ * 匹配 router：name，生成新的router
  * @param routes_name
  * @param route
  */
@@ -18,7 +16,6 @@ function hasPermission(routes_name, route) {
 }
 
 /**
- * 递归过滤异步路由表，返回符合用户角色权限的路由表
  * 从all 的路由数据 ，刷选出满足用户 hasPermission 的路由
  * @param routes
  * @param routes_map
@@ -40,7 +37,7 @@ export function filterAsyncRoutes(routes, routes_map) {
 }
 
 /***
- * constantRouterMap : 公共路由 不需要加权限 没什么意思，比如login ，404，500
+ * constantRouterMap : 公共路由，比如login ，404，500
  * asyncRouterMap ：   动态需添加路由，自定义加权限
  */
 const state = {

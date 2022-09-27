@@ -2,16 +2,7 @@ import axios from 'axios'
 import { Message, Notification } from 'element-ui'
 import store from '@/store'
 import router from '@/router'
-import isString from 'lodash/isString'
-import isPlainObject from 'lodash/isPlainObject'
-
-function trim(data) {
-  let newData = {}
-  for (const [k, v] of Object.entries(data)) {
-    newData[k] = isString(v) ? v.trim() : v
-  }
-  return newData
-}
+import { trimArgs } from './utils'
 
 const defaultHeaders = {
   Accept: 'application/json, text/plain, */*; charset=utf-8',
@@ -25,7 +16,7 @@ Object.assign(axios.defaults.headers.common, defaultHeaders)
 // create an axios instance
 const service = axios.create({
   baseURL: process.env.VUE_APP_BASE_API, // api的base_url
-  timeout: 5000 // request timeout
+  timeout: 10000 // request timeout
 })
 
 // request interceptor
@@ -36,24 +27,7 @@ service.interceptors.request.use(
     }
 
     // trim 参数
-    try {
-      if (config.method !== 'get') {
-        let newData = config.data
-        if (isPlainObject(config.data)) {
-          newData = trim(config.data)
-        }
-        config.data = newData
-      } else {
-        let newData = config.params
-        if (isPlainObject(config.params)) {
-          newData = trim(config.params)
-        }
-        config.params = newData
-      }
-    } catch (e) {
-      console.log('trim error:', e)
-    }
-    return config
+    return trimArgs(config)
   },
   error => {
     Promise.reject(error).then(r => console.log('err:', r))
@@ -81,7 +55,7 @@ service.interceptors.response.use(
     const errCode = error.response.data.code || ''
 
     let message
-    // 403 404 401(认证相关) 500，其他接口都走200
+    // 根据自己业务 拦截error
     switch (status) {
       case 403:
         message = '权限不足'
@@ -92,6 +66,10 @@ service.interceptors.response.use(
         break
 
       case 401:
+        message = errMsg
+        break
+
+      case 422:
         message = errMsg
         break
 
@@ -117,8 +95,7 @@ service.interceptors.response.use(
       duration: 3 * 1000
     })
 
-    const url = error.response.config.url
-    if (status === 401 && !url.endsWith('/auth/login')) {
+    if (status === 401) {
       await store.dispatch('user/fedLogOut')
       await router.push({ path: '/login' })
     }
