@@ -29,3 +29,17 @@ export function removeUsername() {
 export function clearLocalStorage() {
   localStorage.clear()
 }
+
+const MenuFirstKey = 'Menu First Name'
+
+export function getMenuFirst() {
+  return localStorage.getItem(MenuFirstKey)
+}
+
+export function setMenuFirst(key) {
+  return localStorage.setItem(MenuFirstKey, key)
+}
+
+export function removeMenuFirst() {
+  localStorage.removeItem(MenuFirstKey)
+}

@@ -1,11 +1,13 @@
 import Cookies from 'js-cookie'
+import { getMenuFirst, setMenuFirst, removeMenuFirst } from '@/utils/base/auth'
 
 const state = {
   sidebar: {
     opened: !+Cookies.get('sidebarStatus'),
     withoutAnimation: false
   },
-  device: 'desktop'
+  device: 'desktop',
+  activeMenuFirstName: getMenuFirst() || 'Dash'
 }
 
 const mutations = {
@@ -25,6 +27,10 @@ const mutations = {
   },
   TOGGLE_DEVICE: (state, device) => {
     state.device = device
+  },
+
+  SET_ACTIVE_MENU: (state, name) => {
+    state.activeMenuFirstName = name
   }
 }
 
@@ -37,6 +43,15 @@ const actions = {
   },
   toggleDevice({ commit }, device) {
     commit('TOGGLE_DEVICE', device)
+  },
+
+  changeActiveMenu({ commit }, name) {
+    setMenuFirst(name)
+    commit('SET_ACTIVE_MENU', name)
+  },
+  removeActiveMenuOne({ commit }) {
+    removeMenuFirst()
+    commit('SET_ACTIVE_MENU', null)
   }
 }
 

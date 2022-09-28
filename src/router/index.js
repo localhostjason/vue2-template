@@ -3,6 +3,12 @@ import Router from 'vue-router'
 
 Vue.use(Router)
 
+// 解决ElementUI导航栏中的vue-router在3.0版本以上重复点菜单报错问题
+const originalPush = Router.prototype.push
+Router.prototype.push = function push(location) {
+  return originalPush.call(this, location).catch(err => err)
+}
+
 /* Layout */
 import { Layout } from './const'
 
@@ -25,7 +31,7 @@ import SystemRouter from './modules/system'
     icon: 'svg-name'              the icon show in the sidebar
     noCache: true                if set true, the page will no be cached(default is false)
     affix: true                  if set true, the tag will affix in the tags-view
-    click: true                   if set true, layout tb（上下布局，局限） no show second menu (from waf3)
+    click: true                   if set true, layout tb（上下布局，局限） no show second menu
   }
  */
 
