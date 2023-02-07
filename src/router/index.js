@@ -15,7 +15,6 @@ import { Layout } from './const'
 /* Router Modules */
 import UserRouter from './modules/user'
 import LogRouter from './modules/log'
-import SystemRouter from './modules/system'
 
 /**
  * Note: sub-menu only appear when route children. Length >= 1
@@ -101,7 +100,6 @@ export const constantRoutes = [
 export const asyncRoutes = [
   LogRouter,
   UserRouter,
-  SystemRouter,
   {
     path: '*',
     redirect: '/404',

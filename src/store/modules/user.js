@@ -1,10 +1,10 @@
-import { getToken, setToken, getUsername, setUsername, clearLocalStorage } from '@/utils/base/auth'
+import { getToken, setToken, clearLocalStorage } from '@/utils/base/auth'
 
 const state = {
   token: getToken(),
-  username: getUsername(),
+  username: null,
   role: null,
-  menus: null
+  menus: []
 }
 
 const mutations = {
@@ -26,22 +26,17 @@ function removeStore(commit) {
   commit('SET_TOKEN', '')
   commit('SET_USERNAME', '')
   commit('SET_ROLE', null)
-  commit('SET_MENUS', null)
+  commit('SET_MENUS', [])
   clearLocalStorage()
 }
 
 const actions = {
-  setToken({ commit }, data) {
-    const { token, username } = data
+  setToken({ commit }, token) {
     setToken(token)
-    setUsername(username)
     commit('SET_TOKEN', token)
-    commit('SET_USERNAME', username)
   },
-
-  setUserMenu({ commit }, menus) {
-    console.log('get role menus', menus)
-    commit('SET_MENUS', menus)
+  setUsername({ commit }, username) {
+    commit('SET_USERNAME', username)
   },
 
   // get user info fail then logout

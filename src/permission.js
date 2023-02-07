@@ -4,6 +4,7 @@ import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
 import { getToken } from '@/utils/base/auth'
 import getPageTitle from '@/utils/base/get-page-title'
+import { getUserInfo } from '@/api/auth/user'
 
 NProgress.configure({ showSpinner: false })
 
@@ -31,14 +32,14 @@ router.beforeEach(async (to, from, next) => {
     return
   }
 
-  // store：权限 menus，刷新页面再次获取一次
-  if (store.getters.menus) {
+  if (store.getters.username) {
     next()
     return
   }
 
   try {
-    // todo role menu 请求
+    const { username } = await getUserInfo()
+    await store.dispatch('user/setUsername', username)
     await store.dispatch('user/setUserMenu', [])
   } catch (e) {
     await goToLogin(next)

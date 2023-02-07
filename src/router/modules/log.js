@@ -27,15 +27,6 @@ const LogRouter = {
         title: '系统日志',
         icon: 'layers'
       }
-    },
-    {
-      path: 'operation',
-      component: () => import('@/views/user'),
-      name: 'OperationLog',
-      meta: {
-        title: '操作日志',
-        icon: 'file'
-      }
     }
   ]
 }

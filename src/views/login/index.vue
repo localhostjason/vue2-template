@@ -93,9 +93,9 @@ export default {
         if (!valid) return
         try {
           this.loading = true
-          const response = await login(this.loginForm)
+          const {token} = await login(this.loginForm)
           this.loading = false
-          await this.$store.dispatch('user/setToken', response)
+          await this.$store.dispatch('user/setToken', token)
         } catch (e) {
           this.loading = false
           return
