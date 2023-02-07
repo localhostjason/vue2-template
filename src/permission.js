@@ -11,6 +11,10 @@ NProgress.configure({ showSpinner: false })
 const whiteList = ['/login']
 
 router.beforeEach(async (to, from, next) => {
+  if (to.name && to.matched.length) {
+    await store.dispatch('app/changeActiveMenu', to.matched[0].name)
+  }
+
   NProgress.start()
 
   // set page title
@@ -40,7 +44,6 @@ router.beforeEach(async (to, from, next) => {
   try {
     const { username } = await getUserInfo()
     await store.dispatch('user/setUsername', username)
-    await store.dispatch('user/setUserMenu', [])
   } catch (e) {
     await goToLogin(next)
     return

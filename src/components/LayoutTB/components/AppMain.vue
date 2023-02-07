@@ -60,7 +60,6 @@ export default {
       };
 
       const matched = this.$route.matched;
-      console.log(111, matched)
 
       // matched 长度为2  表示只有2层路由  无需展示三级菜单
       if (matched.length === 2) {

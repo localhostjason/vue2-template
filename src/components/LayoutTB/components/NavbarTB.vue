@@ -122,7 +122,7 @@ export default {
     },
 
     showPath(name, basename) {
-      console.log(name, this.$route.name)
+      console.log(name, this.$route.name, basename)
       this.$store.dispatch('app/changeActiveMenu', basename)
       this.$router.push({
         name: name
