@@ -1,24 +1,27 @@
 # vue2-template
 
-## Project setup
-```
+### 技术栈
+
+| 名称       | 描述             |
+| ---------- | ---------------- |
+| vue2       | vue核心代码库    |
+| vue-router | vue 路由         |
+| vuex       | vue 状态管理     |
+| webpack    | 模板管理构建工具 |
+| element-ui | 核心 UI 库。     |
+| lodash     | 强大的js函数库   |
+| echarts    | 核心 图表库      |
+
+
+
+### 运行步骤
+
+```shell
 npm install
-```
-
-### Compiles and hot-reloads for development
-```
 npm run serve
-```
 
-### Compiles and minifies for production
-```
+# build
 npm run build
 ```
 
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+webpack 更详细配置查看 [Configuration Reference](https://cli.vuejs.org/config/).
