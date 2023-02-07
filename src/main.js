@@ -9,13 +9,16 @@ import 'normalize.css/normalize.css'
 import './icons'
 import './plugins/element'
 import './styles/index.scss'
-import './permission'
+import { usePermissionRouter } from './permission'
 
 Object.keys(filters).forEach(key => {
   Vue.filter(key, filters[key])
 })
 
 Vue.config.productionTip = false
+
+// load permission
+usePermissionRouter(router)
 
 new Vue({
   router,
